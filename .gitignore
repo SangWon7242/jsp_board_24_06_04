@@ -42,3 +42,4 @@ logs/
 server.log
 access.log
 error.log
+logs/*.txt
