@@ -17,6 +17,6 @@ public class HelloServlet extends HttpServlet {
     resp.setContentType("text/html; charset utf-8"); // 브라우저에게 우리가 하는 결과물이 UTF-8이다 라고 알리는 의미
 
     resp.getWriter().append("HI!!!!!");
-    resp.getWriter().append("반갑습니다.");
+    resp.getWriter().append("어서오세요~!!!!");
   }
 }
