@@ -47,7 +47,7 @@ public class Rq {
     return value;
   }
 
-  public void writer(String str) {
+  public void appendBody(String str) {
     try {
       resp.getWriter().append(str);
     } catch (IOException e) {
