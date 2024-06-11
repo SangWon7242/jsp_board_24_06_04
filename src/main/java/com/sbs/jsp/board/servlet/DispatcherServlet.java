@@ -21,8 +21,8 @@ public class DispatcherServlet extends HttpServlet {
     ArticleController articleController = new ArticleController();
 
     // getRequestURI
-    // http://localhost:8080/usr/article/write
-    // /usr/article/write 부분만 가져온다.
+    // http://localhost:8080/usr/article/list
+    // /usr/article/list 부분만 가져온다.
     String url = req.getRequestURI();
 
     switch (url) {
