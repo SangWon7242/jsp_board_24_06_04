@@ -48,7 +48,7 @@ public class ArticleController {
   }
 
   public void showDetail(Rq rq) {
-    long id = rq.getIntParam("id", 0);
+    long id = rq.getLongPathValueByIndex(1, 0);
 
     if(id == 0) {
       rq.appendBody("올바른 요청이 아닙니다.");
@@ -56,6 +56,11 @@ public class ArticleController {
     }
 
     ArticleDto articleDto = articleService.findById(id);
+
+    if(articleDto == null) {
+      rq.appendBody("게시물이 존재하지 않습니다.");
+      return;
+    }
 
     rq.setAttr("article", articleDto);
     rq.view("usr/article/detail");
