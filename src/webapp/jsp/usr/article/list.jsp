@@ -27,7 +27,7 @@
         <a href="/usr/article/detail/free/<%=article.getId()%>" class="flex-grow hover:underline hover:text-[red]">
           <%=article.getTitle()%>
         </a>
-        <a href="/usr/article/delete/free/<%=article.getId()%>" class="hover:underline hover:text-[red]">
+        <a onclick="if(!confirm('정말 삭제하시겠습니까?')) return false;" href="/usr/article/delete/free/<%=article.getId()%>" class="hover:underline hover:text-[red]">
           삭제
         </a>
       </li>
