@@ -7,7 +7,6 @@ import jakarta.servlet.http.HttpServletResponse;
 
 import java.io.IOException;
 import java.io.UnsupportedEncodingException;
-import java.util.Arrays;
 
 public class Rq {
   private final HttpServletRequest req;
@@ -101,8 +100,6 @@ public class Rq {
 
   private String getPathValueByIndex(int index, String defaultValue) {
     String[] bits = req.getRequestURI().split("/");
-
-    System.out.println(Arrays.toString(bits));
 
     try {
       return bits[4 + index]; // 5
