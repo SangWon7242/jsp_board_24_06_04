@@ -105,7 +105,7 @@ public class Rq {
     System.out.println(Arrays.toString(bits));
 
     try {
-      return bits[4 + index];
+      return bits[4 + index]; // 5
     } catch (ArrayIndexOutOfBoundsException e) {
       return defaultValue;
     }
