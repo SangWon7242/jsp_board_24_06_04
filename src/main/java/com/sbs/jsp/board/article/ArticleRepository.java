@@ -22,7 +22,17 @@ public class ArticleRepository {
     return id;
   }
 
-  public List<ArticleDto> getArticles() {
+  public List<ArticleDto> findAll() {
     return datum;
+  }
+
+  public ArticleDto findById(long id) {
+    for(ArticleDto articleDto : datum) {
+      if(articleDto.getId() == id) {
+        return articleDto;
+      }
+    }
+
+    return null;
   }
 }

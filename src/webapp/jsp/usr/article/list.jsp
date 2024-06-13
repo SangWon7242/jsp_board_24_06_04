@@ -4,13 +4,17 @@
 <%@ page import="com.sbs.jsp.board.article.ArticleDto" %>
 
 <%
-  List<ArticleDto> articles = (List<ArticleDto>)request.getAttribute("articles");;
+  List<ArticleDto> articles = (List<ArticleDto>)request.getAttribute("articles");
 %>
 
 <h1>게시물 리스트</h1>
 
 <ul>
   <% for(ArticleDto article : articles) { %>
-    <li><%= article.getId()%>번 : <%= article.getTitle()%></li>
+    <li>
+      <a href="/usr/article/detail?id=<%=article.getId()%>">
+        <%=article.getId()%>. <%=article.getTitle()%>
+      </a>
+    </li>
   <% } %>
 </ul>

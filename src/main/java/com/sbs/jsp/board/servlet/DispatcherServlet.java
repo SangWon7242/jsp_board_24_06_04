@@ -29,6 +29,7 @@ public class DispatcherServlet extends HttpServlet {
       case "GET" -> {
         switch (rq.getActionPath()) {
           case "/usr/article/list" -> articleController.showList(rq);
+          case "/usr/article/detail" -> articleController.showDetail(rq);
           case "/usr/article/write" -> articleController.showWrite(rq);
           case "/usr/member/login" -> memberController.showLogin(rq);
         }

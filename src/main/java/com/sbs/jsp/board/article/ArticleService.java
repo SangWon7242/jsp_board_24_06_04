@@ -9,11 +9,15 @@ public class ArticleService {
     articleRepository = new ArticleRepository();
   }
 
-  public List<ArticleDto> getArticles() {
-    return articleRepository.getArticles();
+  public List<ArticleDto> findAll() {
+    return articleRepository.findAll();
   }
 
   public long write(String title, String body) {
     return articleRepository.write(title, body);
+  }
+
+  public ArticleDto findById(long id) {
+    return articleRepository.findById(id);
   }
 }

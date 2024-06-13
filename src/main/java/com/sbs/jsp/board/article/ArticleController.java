@@ -12,7 +12,7 @@ public class ArticleController {
   }
 
   public void showList(Rq rq) {
-    List<ArticleDto> articleDtos = articleService.getArticles();
+    List<ArticleDto> articleDtos = articleService.findAll();
 
     if (articleDtos.isEmpty()) {
       rq.appendBody("게시물이 존재하지 않습니다.");
@@ -45,5 +45,19 @@ public class ArticleController {
     long id = articleService.write(title, body);
 
     rq.appendBody("<div>%d번 게시물이 생성되었습니다.</div>\n".formatted(id));
+  }
+
+  public void showDetail(Rq rq) {
+    long id = rq.getIntParam("id", 0);
+
+    if(id == 0) {
+      rq.appendBody("올바른 요청이 아닙니다.");
+      return;
+    }
+
+    ArticleDto articleDto = articleService.findById(id);
+
+    rq.setAttr("article", articleDto);
+    rq.view("usr/article/detail");
   }
 }
