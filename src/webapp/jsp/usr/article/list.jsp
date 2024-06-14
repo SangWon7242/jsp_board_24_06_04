@@ -27,9 +27,14 @@
         <a href="/usr/article/detail/free/<%=article.getId()%>" class="flex-grow hover:underline hover:text-[red]">
           <%=article.getTitle()%>
         </a>
-        <a onclick="if(!confirm('정말 삭제하시겠습니까?')) return false;" href="/usr/article/delete/free/<%=article.getId()%>" class="hover:underline hover:text-[red]">
-          삭제
-        </a>
+        <div class="flex gap-x-3">
+          <a onclick="if(!confirm('정말 삭제하시겠습니까?')) return false;" href="/usr/article/delete/free/<%=article.getId()%>" class="hover:underline hover:text-[red]">
+            삭제
+          </a>
+          <a href="/usr/article/modify/free/<%=article.getId()%>" class="hover:underline hover:text-[red]">
+            수정
+          </a>
+        </div>
       </li>
       <% } %>
     </ul>
