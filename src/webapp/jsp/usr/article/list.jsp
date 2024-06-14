@@ -10,7 +10,7 @@
 <%@ include file="../common/head.jspf" %>
 
 <!-- 보통 구역은 섹션으로 나눈다 . -->
-<section class="article-list-wrap">
+<section class="article-list-wrap mt-[10px]">
   <div class="container mx-auto">
     <h1 class="font-bold text-lg">게시물 리스트</h1>
     <ul class="mt-5">
