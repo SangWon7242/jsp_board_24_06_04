@@ -47,7 +47,7 @@ function ArticleSave__submitForm(form) {
         </div>
       </div>
 
-      <div style="display:flex; gap: 0 5px; margin-top: 5px">
+      <div class="flex gap-x-[5px] mt-[5px]">
         <button type="submit">수정</button>
         <a href="/usr/article/list">취소</a>
       </div>

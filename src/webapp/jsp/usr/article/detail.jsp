@@ -6,18 +6,27 @@
   ArticleDto article = (ArticleDto)request.getAttribute("article");
 %>
 
-<h1>게시물 상세보기</h1>
+<%@ include file="../common/head.jspf" %>
 
-<div>
-  <% if(article != null) { %>
+<section class="article-detail-wrap mt-[10px]">
+  <div class="container mx-auto">
     <div>
-      ID : <%=article.getId()%>
+      <% if(article != null) { %>
+      <div>
+        ID : <%=article.getId()%>
+      </div>
+      <div>
+        TITLE : <%=article.getTitle()%>
+      </div>
+      <div>
+        BODY : <%=article.getBody()%>
+      </div>
+      <% } %>
     </div>
-    <div>
-      TITLE : <%=article.getTitle()%>
+    <div class="flex gap-x-[5px] mt-[5px]">
+      <a href="/usr/article/list">리스트로 이동</a>
     </div>
-    <div>
-      BODY : <%=article.getBody()%>
-    </div>
-  <% } %>
-</div>
+  </div>
+</section>
+
+<%@ include file="../common/foot.jspf" %>
