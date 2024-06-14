@@ -87,6 +87,22 @@ public class Rq {
             """.formatted(url));
   }
 
+  public void historyBack(String msg) {
+    if(msg != null && !msg.trim().isEmpty()) {
+      println("""
+              <script>
+              alert("%s");
+              </script>
+              """.formatted(msg));
+    }
+
+    println("""
+            <script>
+            history.back();
+            </script>
+            """);
+  }
+
   public void println(String str) {
     print(str + "\n");
   }
