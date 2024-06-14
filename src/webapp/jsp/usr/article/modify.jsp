@@ -2,10 +2,6 @@
 
 <%@ page import="com.sbs.jsp.board.article.ArticleDto" %>
 
-<%
-ArticleDto article = (ArticleDto)request.getAttribute("article");
-%>
-
 <script>
 function ArticleSave__submitForm(form) {
 	form.title.value = form.title.value.trim();
@@ -36,14 +32,14 @@ function ArticleSave__submitForm(form) {
       <div>
         <span>제목</span>
         <div>
-          <input name="title" type="text" maxlength="50" placeholder="제목을 입력해주세요." value="<%=article.getTitle()%>">
+          <input name="title" type="text" maxlength="50" placeholder="제목을 입력해주세요." value="${article.title}">
         </div>
       </div>
 
       <div>
         <span>내용</span>
         <div>
-          <textarea name="body" cols="30" rows="10" placeholder="내용을 입력해주세요."><%=article.getBody()%></textarea>
+          <textarea name="body" cols="30" rows="10" placeholder="내용을 입력해주세요.">${article.body}</textarea>
         </div>
       </div>
 
