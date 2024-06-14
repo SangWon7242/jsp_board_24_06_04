@@ -6,8 +6,6 @@
 ArticleDto article = (ArticleDto)request.getAttribute("article");
 %>
 
-<h1>게시물 수정</h1>
-
 <script>
 function ArticleSave__submitForm(form) {
 	form.title.value = form.title.value.trim();
@@ -30,23 +28,31 @@ function ArticleSave__submitForm(form) {
 }
 </script>
 
-<form method="POST" onsubmit="ArticleSave__submitForm(this); return false;">
-  <div>
-    <span>제목</span>
-    <div>
-      <input name="title" type="text" maxlength="50" placeholder="제목을 입력해주세요." value="<%=article.getTitle()%>">
-    </div>
-  </div>
+<%@ include file="../common/head.jspf" %>
 
-  <div>
-    <span>내용</span>
-    <div>
-      <textarea name="body" cols="30" rows="10" placeholder="내용을 입력해주세요."><%=article.getBody()%></textarea>
-    </div>
-  </div>
+<section class="article-modify-wrap">
+  <div class="container mx-auto">
+    <form method="POST" onsubmit="ArticleSave__submitForm(this); return false;">
+      <div>
+        <span>제목</span>
+        <div>
+          <input name="title" type="text" maxlength="50" placeholder="제목을 입력해주세요." value="<%=article.getTitle()%>">
+        </div>
+      </div>
 
-  <div style="display:flex; gap: 0 5px; margin-top: 5px">
-    <button type="submit">수정</button>
-    <a href="/usr/article/list">취소</a>
+      <div>
+        <span>내용</span>
+        <div>
+          <textarea name="body" cols="30" rows="10" placeholder="내용을 입력해주세요."><%=article.getBody()%></textarea>
+        </div>
+      </div>
+
+      <div style="display:flex; gap: 0 5px; margin-top: 5px">
+        <button type="submit">수정</button>
+        <a href="/usr/article/list">취소</a>
+      </div>
+    </form>
   </div>
-</form>
+</section>
+
+<%@ include file="../common/foot.jspf" %>
