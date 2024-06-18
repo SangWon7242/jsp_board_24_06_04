@@ -1,12 +1,13 @@
 package com.sbs.jsp.board.member;
 
 import com.sbs.jsp.board.Rq;
+import com.sbs.jsp.board.container.Container;
 
 public class MemberController {
   private MemberService memberService;
 
   public MemberController() {
-    memberService = new MemberService();
+    memberService = Container.memberService;
   }
 
   public void showLogin(Rq rq) {
