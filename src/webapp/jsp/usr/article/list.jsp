@@ -20,9 +20,11 @@
             ${article.title}
           </a>
           <div class="flex gap-x-3">
-            <a onclick="if(!confirm('정말 삭제하시겠습니까?')) return false;" href="/usr/article/delete/free/${article.id}" class="hover:underline hover:text-[red]">
+            <a onclick="if(confirm('정말 삭제하시겠습니까?')) $(this).next().submit();" class="hover:underline hover:text-[red] cursor-pointer">
               삭제
             </a>
+            <form hidden action="POST" action="/usr/article/delete/free/${article.id}"></form>
+
             <a href="/usr/article/modify/free/${article.id}" class="hover:underline hover:text-[red]">
               수정
             </a>
