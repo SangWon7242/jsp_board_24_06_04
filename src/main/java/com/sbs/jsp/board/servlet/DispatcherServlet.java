@@ -25,7 +25,7 @@ public class DispatcherServlet extends HttpServlet {
     // /usr/article/list 부분만 가져온다.
     String url = req.getRequestURI();
 
-    switch (rq.getMethod()) {
+    switch (rq.getRouteMethod()) {
       case "GET" -> {
         switch (rq.getActionPath()) {
           case "/usr/article/list" -> articleController.showList(rq);
@@ -38,8 +38,13 @@ public class DispatcherServlet extends HttpServlet {
       case "POST" -> {
         switch (rq.getActionPath()) {
           case "/usr/article/write" -> articleController.doWrite(rq);
-          case "/usr/article/delete" -> articleController.doDelete(rq);
           case "/usr/article/modify" -> articleController.doModify(rq);
+        }
+      }
+
+      case "DELETE" -> {
+        switch (rq.getActionPath()) {
+          case "/usr/article/delete" -> articleController.doDelete(rq);
         }
       }
     }

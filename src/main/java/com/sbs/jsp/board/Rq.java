@@ -143,4 +143,14 @@ public class Rq {
       return defaultValue;
     }
   }
+
+  public String getRouteMethod() {
+    String method = getParam("_method", "");
+
+    if(!method.isEmpty()) {
+      return method.toUpperCase();
+    }
+
+    return req.getMethod();
+  }
 }
