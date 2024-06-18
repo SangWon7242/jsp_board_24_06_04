@@ -4,11 +4,23 @@ import lombok.AllArgsConstructor;
 import lombok.Data;
 import lombok.NoArgsConstructor;
 
+import java.util.Map;
+
 @Data
 @NoArgsConstructor
 @AllArgsConstructor
 public class ArticleDto {
   private long id;
+  private String regDate;
+  private String updateDate;
   private String title;
   private String body;
+
+  public ArticleDto(Map<String, Object> articleMap) {
+    this.id = (long)articleMap.get("id");
+    this.regDate = (String)articleMap.get("regDate");
+    this.updateDate = (String)articleMap.get("updateDate");
+    this.title = (String)articleMap.get("id");
+    this.body = (String)articleMap.get("id");
+  }
 }
