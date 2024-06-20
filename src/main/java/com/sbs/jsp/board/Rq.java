@@ -1,9 +1,11 @@
 package com.sbs.jsp.board;
 
+import com.sbs.jsp.board.member.MemberDto;
 import jakarta.servlet.RequestDispatcher;
 import jakarta.servlet.ServletException;
 import jakarta.servlet.http.HttpServletRequest;
 import jakarta.servlet.http.HttpServletResponse;
+import jakarta.servlet.http.HttpSession;
 
 import java.io.IOException;
 import java.io.UnsupportedEncodingException;
@@ -47,6 +49,10 @@ public class Rq {
     }
 
     return value;
+  }
+
+  public Object getAttr(String name) {
+    return req.getAttribute(name);
   }
 
   public void setAttr(String name, Object value) {
@@ -152,5 +158,17 @@ public class Rq {
     }
 
     return req.getMethod();
+  }
+
+  public HttpSession getSession(String loginedMember) {
+    HttpSession session = req.getSession();
+    return session;
+  }
+
+  public HttpSession setSession(String loginedMember, MemberDto member) {
+    HttpSession session = req.getSession();
+    session.setAttribute("loginedMember", member);
+
+    return session;
   }
 }

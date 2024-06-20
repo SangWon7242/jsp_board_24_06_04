@@ -42,6 +42,7 @@ public class DispatcherServlet extends HttpServlet {
           case "/usr/article/write" -> articleController.doWrite(rq);
           case "/usr/article/modify" -> articleController.doModify(rq);
           case "/usr/member/join" -> memberController.doJoin(rq);
+          case "/usr/member/login" -> memberController.doLogin(rq);
         }
       }
 

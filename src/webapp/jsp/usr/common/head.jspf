@@ -51,7 +51,7 @@
       <nav class="top-bar__menu-1 ml-auto">
         <ul class="flex h-full">
           <li>
-            <a href="/usr/article/write/free" class="flex h-full items-center px-[20px] hover:text-underline hover:text-white gap-x-1">
+            <a href="/usr/article/write/free" class="flex h-full items-center px-[10px] hover:text-underline hover:text-white gap-x-1">
               <span>
                 <i class="fa-solid fa-newspaper"></i>
               </span>
@@ -59,7 +59,7 @@
             </a>
           </li>
           <li>
-            <a href="/usr/article/list/free" class="flex h-full items-center px-[20px] hover:text-underline hover:text-white gap-x-1">
+            <a href="/usr/article/list/free" class="flex h-full items-center px-[10px] hover:text-underline hover:text-white gap-x-1">
               <span>
                 <i class="fa-solid fa-list"></i>
               </span>
@@ -67,13 +67,33 @@
             </a>
           </li>
           <li>
-            <a href="/usr/member/join" class="flex h-full items-center px-[20px] hover:text-underline hover:text-white gap-x-1">
+            <a href="/usr/member/join" class="flex h-full items-center px-[10px] hover:text-underline hover:text-white gap-x-1">
               <span>
                 <i class="fa-solid fa-user-plus"></i>
               </span>
               <span>회원가입</span>
             </a>
           </li>
+          <c:if test="${!isLogined}">
+            <li>
+              <a href="/usr/member/login" class="flex h-full items-center px-[10px] hover:text-underline hover:text-white gap-x-1">
+                <span>
+                  <i class="fa-solid fa-right-to-bracket"></i>
+                </span>
+                <span>로그인</span>
+              </a>
+            </li>
+          </c:if>
+          <c:if test="${isLogined}">
+            <li>
+              <a href="/usr/member/logout" class="flex h-full items-center px-[20px] hover:text-underline hover:text-white gap-x-1">
+                <span class="opacity-[0.5]">
+                  <i class="fa-solid fa-arrow-right-from-bracket"></i>
+                </span>
+                <span>로그아웃</span>
+              </a>
+            </li>
+          </c:if>
         </ul>
       </nav>
     </div>
