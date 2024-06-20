@@ -8,4 +8,8 @@ public class MemberService {
   public MemberService() {
     memberRepository = Container.memberRepository;
   }
+
+  public void join(String loginId, String loginPw, String name) {
+    memberRepository.join(loginId, loginPw, name);
+  }
 }

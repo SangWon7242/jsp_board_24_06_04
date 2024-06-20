@@ -66,6 +66,14 @@
               <span>자유게시물 리스트</span>
             </a>
           </li>
+          <li>
+            <a href="/usr/member/join" class="flex h-full items-center px-[20px] hover:text-underline hover:text-white gap-x-1">
+              <span>
+                <i class="fa-solid fa-user-plus"></i>
+              </span>
+              <span>회원가입</span>
+            </a>
+          </li>
         </ul>
       </nav>
     </div>
