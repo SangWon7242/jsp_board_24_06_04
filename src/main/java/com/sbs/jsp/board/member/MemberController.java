@@ -40,6 +40,13 @@ public class MemberController {
       return;
     }
 
+    boolean isJoinAvailableLoginId = memberService.findByLoginId(loginId) != null;
+
+    if(isJoinAvailableLoginId) {
+      rq.historyBack("%s(은)는 이미 사용중인 로그인 아이디입니다.".formatted(loginId));
+      return;
+    }
+
     memberService.join(loginId, loginPw, name);
 
     rq.replace("/usr/article/list/free", "회원가입이 되었습니다.");

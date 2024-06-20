@@ -15,4 +15,17 @@ public class MemberRepository {
 
     MysqlUtil.insert(sql);
   }
+
+  public MemberDto findByLoginId(String loginId) {
+    SecSql sql = new SecSql();
+    sql.append("SELECT *");
+    sql.append("FROM `member`");
+    sql.append("WHERE loginId = ?", loginId);
+
+    MemberDto memberDto = new MemberDto(MysqlUtil.selectRow(sql));
+
+    if(memberDto == null) return null;
+
+    return memberDto;
+  }
 }
