@@ -7,19 +7,29 @@
 <section class="article-list-wrap mt-[10px]">
   <div class="container mx-auto">
     <h1 class="font-bold text-lg">게시물 리스트</h1>
-    <ul class="mt-5">
+    <table class="table">
+      <colgroup>
+        <col style="width: 100px;">
+        <col>
+        <col style="width: 100px;">
+      </colgroup>
+      <thead>
+        <tr class="text-center">
+          <th>번호</th>
+          <th>제목</th>
+          <th>비고</th>
+        </tr>
+      </thead>
+      <tbody>
       <c:forEach items="${articles}" var="article">
-        <!-- li가 flex 컨테이너 된다. -->
-        <!-- li가 flex가 되는 경우 그의 자식은 flex item이 된다. -->
-        <li class="flex">
-          <a href="/usr/article/detail/free/${article.id}" class="w-[40px] text-center hover:underline hover:text-[red]">
-            ${article.id}
-          </a>
-          <!-- flex-grow : 성장성, 1 -->
-          <a href="/usr/article/detail/free/${article.id}" class="flex-grow hover:underline hover:text-[red]">
-            ${article.title}
-          </a>
-          <div class="flex gap-x-3">
+        <tr>
+          <th class="text-center">${article.id}</th>
+          <td>
+            <a href="/usr/article/detail/free/${article.id}" class="flex-grow hover:underline hover:text-[red]">
+              ${article.title}
+            </a>
+          </td>
+          <td class="text-center">
             <a onclick="if(!confirm('정말 삭제하시겠습니까?')) return false;" href="/usr/article/delete/free/${article.id}?_method=DELETE" class="hover:underline hover:text-[red]">
               삭제
             </a>
@@ -27,10 +37,11 @@
             <a href="/usr/article/modify/free/${article.id}" class="hover:underline hover:text-[red]">
               수정
             </a>
-          </div>
-        </li>
+          </td>
+        </tr>
       </c:forEach>
-    </ul>
+      </tbody>
+    </table>
   </div>
 </section>
 
