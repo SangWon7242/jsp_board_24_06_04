@@ -11,7 +11,7 @@ public class MemberController {
   }
 
   public void showLogin(Rq rq) {
-    rq.print("로그인");
+    rq.view("usr/member/login");
   }
 
   public void showJoin(Rq rq) {
