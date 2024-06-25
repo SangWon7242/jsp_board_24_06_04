@@ -13,8 +13,8 @@ public class ArticleService {
     return articleRepository.findAll();
   }
 
-  public long write(String title, String body) {
-    return articleRepository.write(title, body);
+  public long write(String title, String body, long memberId) {
+    return articleRepository.write(title, body, memberId);
   }
 
   public ArticleDto findById(long id) {

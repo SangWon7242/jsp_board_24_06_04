@@ -2,6 +2,7 @@ package com.sbs.jsp.board.article;
 
 import com.sbs.jsp.board.Rq;
 import com.sbs.jsp.board.container.Container;
+import com.sbs.jsp.board.member.MemberDto;
 
 import java.util.List;
 
@@ -43,7 +44,9 @@ public class ArticleController {
       return;
     }
 
-    long id = articleService.write(title, body);
+    MemberDto memberDto = (MemberDto) rq.getSessionAttr("loginedMember");
+
+    long id = articleService.write(title, body, memberDto.getId());
 
     rq.replace("/usr/article/detail/free/%d".formatted(id), "%d번 게시물이 생성되었습니다.".formatted(id));
   }
