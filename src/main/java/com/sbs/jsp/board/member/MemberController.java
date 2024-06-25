@@ -2,7 +2,6 @@ package com.sbs.jsp.board.member;
 
 import com.sbs.jsp.board.Rq;
 import com.sbs.jsp.board.container.Container;
-import jakarta.servlet.http.HttpSession;
 
 public class MemberController {
   private MemberService memberService;
@@ -12,16 +11,6 @@ public class MemberController {
   }
 
   public void showLogin(Rq rq) {
-    boolean isLogined = false;
-
-    HttpSession session = rq.getSession("loginedMember");
-
-    if(session != null) { // 세션이 null이 아니라는 의미는 로그인 되었다는 의미
-      isLogined = true;
-    }
-
-    rq.setAttr("isLogined", isLogined);
-
     rq.view("usr/member/login");
   }
 
@@ -51,7 +40,7 @@ public class MemberController {
       return;
     }
 
-    boolean isJoinAvailableLoginId = memberService.findByLoginId(loginId) != null;
+    boolean isJoinAvailableLoginId = memberService.findMemberByLoginId(loginId) != null;
 
     if(isJoinAvailableLoginId) {
       rq.historyBack("%s(은)는 이미 사용중인 로그인 아이디입니다.".formatted(loginId));
@@ -79,15 +68,21 @@ public class MemberController {
     }
 
     // loginId를 찾았을 때 해당 id가 없는 경우는 현재 DB에 일치하는 로그인 아이가 없다.
-    MemberDto memberDto = memberService.findByLoginId(loginId);
+    MemberDto memberDto = memberService.findMemberByLoginId(loginId);
 
     if(memberDto == null) {
       rq.historyBack("%s(은)는 존재하지 않는 로그인 아이디입니다.".formatted(loginId));
       return;
     }
 
-    rq.setSession("loginedMember", memberDto);
+    rq.setSessionAttr("loginedMember", memberDto);
 
     rq.replace("/usr/article/list", "로그인 되었습니다.");
+  }
+
+  public void doLogout(Rq rq) {
+    rq.removeSessionAttr("loginedMember");
+
+    rq.replace("/usr/article/list", "로그아웃 되었습니다.");
   }
 }

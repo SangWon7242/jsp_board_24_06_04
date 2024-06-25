@@ -3,6 +3,8 @@ package com.sbs.jsp.board.member;
 import com.sbs.jsp.board.util.MysqlUtil;
 import com.sbs.jsp.board.util.SecSql;
 
+import java.util.Map;
+
 public class MemberRepository {
   public void join(String loginId, String loginPw, String name) {
     SecSql sql = new SecSql();
@@ -16,16 +18,16 @@ public class MemberRepository {
     MysqlUtil.insert(sql);
   }
 
-  public MemberDto findByLoginId(String loginId) {
+  public MemberDto findMemberByLoginId(String loginId) {
     SecSql sql = new SecSql();
     sql.append("SELECT *");
     sql.append("FROM `member`");
     sql.append("WHERE loginId = ?", loginId);
 
-    MemberDto memberDto = new MemberDto(MysqlUtil.selectRow(sql));
+    Map<String, Object> memberMap = MysqlUtil.selectRow(sql);
 
-    if(memberDto == null) return null;
+    if(memberMap.isEmpty()) return null;
 
-    return memberDto;
+    return new MemberDto(memberMap);
   }
 }

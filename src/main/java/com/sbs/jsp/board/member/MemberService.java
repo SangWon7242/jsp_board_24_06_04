@@ -13,7 +13,7 @@ public class MemberService {
     memberRepository.join(loginId, loginPw, name);
   }
 
-  public MemberDto findByLoginId(String loginId) {
-    return memberRepository.findByLoginId(loginId);
+  public MemberDto findMemberByLoginId(String loginId) {
+    return memberRepository.findMemberByLoginId(loginId);
   }
 }

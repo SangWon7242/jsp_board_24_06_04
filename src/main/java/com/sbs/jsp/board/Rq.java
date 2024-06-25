@@ -1,11 +1,11 @@
 package com.sbs.jsp.board;
 
-import com.sbs.jsp.board.member.MemberDto;
 import jakarta.servlet.RequestDispatcher;
 import jakarta.servlet.ServletException;
 import jakarta.servlet.http.HttpServletRequest;
 import jakarta.servlet.http.HttpServletResponse;
-import jakarta.servlet.http.HttpSession;
+import lombok.Getter;
+import lombok.Setter;
 
 import java.io.IOException;
 import java.io.UnsupportedEncodingException;
@@ -13,6 +13,11 @@ import java.io.UnsupportedEncodingException;
 public class Rq {
   private final HttpServletRequest req;
   private final HttpServletResponse resp;
+
+  @Getter
+  @Setter
+  private boolean isLogined = false;
+
   public Rq(HttpServletRequest req, HttpServletResponse resp) {
     this.req = req;
     this.resp = resp;
@@ -39,6 +44,10 @@ public class Rq {
     } catch (NumberFormatException e) {
       return defaultValue;
     }
+  }
+
+  public boolean isNotLogined() {
+    return !isLogined;
   }
 
   public String getParam(String paramName, String defaultValue) {
@@ -160,15 +169,15 @@ public class Rq {
     return req.getMethod();
   }
 
-  public HttpSession getSession(String loginedMember) {
-    HttpSession session = req.getSession();
-    return session;
+  public Object getSessionAttr(String attrName) {
+    return req.getSession().getAttribute(attrName);
   }
 
-  public HttpSession setSession(String loginedMember, MemberDto member) {
-    HttpSession session = req.getSession();
-    session.setAttribute("loginedMember", member);
+  public void setSessionAttr(String attrName, Object value) {
+    req.getSession().setAttribute(attrName, value);
+  }
 
-    return session;
+  public void removeSessionAttr(String attrName) {
+    req.getSession().removeAttribute(attrName);
   }
 }

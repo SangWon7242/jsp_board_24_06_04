@@ -18,6 +18,8 @@ public class DispatcherServlet extends HttpServlet {
   protected void doGet(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
     Rq rq = new Rq(req, resp);
 
+    beforeAction(rq);
+
     MemberController memberController = Container.memberController;
     ArticleController articleController = Container.articleController;
 
@@ -35,6 +37,7 @@ public class DispatcherServlet extends HttpServlet {
           case "/usr/article/modify" -> articleController.showModify(rq);
           case "/usr/member/join" -> memberController.showJoin(rq);
           case "/usr/member/login" -> memberController.showLogin(rq);
+          case "/usr/member/logout" -> memberController.doLogout(rq);
         }
       }
       case "POST" -> {
@@ -57,5 +60,13 @@ public class DispatcherServlet extends HttpServlet {
   @Override
   protected void doPost(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
     doGet(req, resp);
+  }
+
+  private void beforeAction(Rq rq) {
+    if(rq.getSessionAttr("loginedMember") != null) {
+      rq.setLogined(true);
+    }
+
+    rq.setAttr("isLogined", rq.isLogined());
   }
 }
