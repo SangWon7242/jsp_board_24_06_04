@@ -17,6 +17,7 @@
         <tr class="text-center">
           <th>번호</th>
           <th>제목</th>
+          <th>작성자</th>
           <th>비고</th>
         </tr>
       </thead>
@@ -28,6 +29,9 @@
             <a href="/usr/article/detail/free/${article.id}" class="flex-grow hover:underline hover:text-[red]">
               ${article.title}
             </a>
+          </td>
+          <td class="text-center">
+            ${article.extra__writerName}
           </td>
           <td class="text-center">
             <a onclick="if(!confirm('정말 삭제하시겠습니까?')) return false;" href="/usr/article/delete/free/${article.id}?_method=DELETE" class="hover:underline hover:text-[red]">

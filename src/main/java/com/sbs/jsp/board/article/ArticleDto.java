@@ -15,6 +15,9 @@ public class ArticleDto {
   private String updateDate;
   private String title;
   private String body;
+  private int memberId;
+
+  private String extra__writerName;
 
   public ArticleDto(Map<String, Object> articleMap) {
     this.id = (int) articleMap.get("id");
@@ -22,5 +25,10 @@ public class ArticleDto {
     this.updateDate = (String) articleMap.get("updateDate");
     this.title = (String) articleMap.get("title");
     this.body = (String) articleMap.get("body");
+    this.memberId = (int) articleMap.get("memberId");
+
+    if(articleMap.get("extra__writerName") != null) {
+      this.extra__writerName = (String) articleMap.get("extra__writerName");
+    }
   }
 }

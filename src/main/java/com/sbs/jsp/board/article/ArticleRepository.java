@@ -25,8 +25,10 @@ public class ArticleRepository {
 
   public static List<ArticleDto> findAll() {
     SecSql sql = new SecSql();
-    sql.append("SELECT *");
-    sql.append("FROM article");
+    sql.append("SELECT A.*, M.name AS extra__writerName");
+    sql.append("FROM article AS A");
+    sql.append("INNER JOIN `member` AS M");
+    sql.append("ON M.id = A.memberId");
     sql.append("ORDER BY id DESC");
 
     List<Map<String, Object>> articlesMap = MysqlUtil.selectRows(sql);
@@ -42,9 +44,11 @@ public class ArticleRepository {
 
   public static ArticleDto findById(long id) {
     SecSql sql = new SecSql();
-    sql.append("SELECT *");
-    sql.append("FROM article");
-    sql.append("WHERE id = ?", id);
+    sql.append("SELECT A.*, M.name AS extra__writerName");
+    sql.append("FROM article AS A");
+    sql.append("INNER JOIN `member` AS M");
+    sql.append("ON M.id = A.memberId");
+    sql.append("WHERE A.id = ?", id);
 
     Map<String, Object> articleMap = MysqlUtil.selectRow(sql);
 

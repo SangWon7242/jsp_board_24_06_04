@@ -32,7 +32,14 @@
             ${article.title}
           </span>
         </div>
-        <div class="article-body">
+        <div class="article-writer-name">
+          <span class="badge badge-ghost">작성자</span>
+          <span> : </span>
+          <span class="writer-name mt-[10px]">
+            ${article.extra__writerName}
+          </span>
+        </div>
+        <div class="article-body mt-[10px]">
           <span class="badge badge-accent">BODY</span>
           <div class="article-body__cont mt-[10px]">
             ${article.body}
